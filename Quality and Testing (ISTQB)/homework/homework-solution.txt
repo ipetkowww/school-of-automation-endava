@@ -1,0 +1,46 @@
+1. What is Software Testing?
+- Software Testing is a method/activity that checks whether the created/developed software products matches specified requirements and to verify that the software product is defect free.
+
+2. Why is Software Testing Required?
+First main reason: to find bugs.
+But Testing is also required:
+* to decrease failures in software product
+* to increase/improve the quality of the product
+* to verify that behavior of the product is same as required/specified in specification/requirements
+* to maintain the company reputation
+
+3. What are the two main categories of software testing?
+- Functioanal
+- Non-functional
+
+4. What different types of manual testing are there?
+* smoke testing
+* ui testing
+* usability testing
+* functioanl testing
+* end to end testing
+* sanity testing
+* regression testing
+* black-box testing
+* user acceptance testing
+* accessibility testing
+* exploratory testing
+
+5. Explain the difference between alpha testing and beta testing.
+- alpha testing is performed at developer's site and beta testing is executed at client’s site
+- alpha testing is executed by testers in particular organization but beta testing is performed by the end users
+- alpha testing can involve whitebox and blackbox techniques while beta testing mainly involves black box testing
+
+6. What are the different levels of manual testing?
+- Unit testing
+- Integration testing
+- System testing
+- Acceptance testing
+
+7. Explain the procedure for manual testing?
+- firstly we have to analyze/read the requirements of the feature that we are going to test
+- we have to crate a clear and descriptive test plan
+- we have to write clear and descrptive test cases which covers all the requirements that we already read in the first step
+- we are executing the test cases and if we find defect, we must raised them (defect also must be clear and descriptive)
+- we have to create report if it's needed
+- after the raised defect are fixed, we must re-test the test cases in order to verify that defects are not reproducible anymore. 

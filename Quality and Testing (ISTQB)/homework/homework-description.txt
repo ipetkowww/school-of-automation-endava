@@ -1,0 +1,20 @@
+Homework:
+Answer to the given questions in a Text file and send them to me until tomorrow evening:
+
+ 
+
+Quality and Testing (ISTQB) Homework:
+
+1. What is Software Testing?
+
+2. Why is Software Testing Required?
+
+3. What are the two main categories of software testing?
+
+4. What different types of manual testing are there?
+
+5. Explain the difference between alpha testing and beta testing.
+
+6. What are the different levels of manual testing?
+
+7. Explain the procedure for manual testing?
