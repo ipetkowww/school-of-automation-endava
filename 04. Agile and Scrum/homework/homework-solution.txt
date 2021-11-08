@@ -1,0 +1,28 @@
+Homework:
+Describe one Sprint process in all the detail you know using your words in a Text file and send it to me via email. 
+
+
+Solution:
+
+* Planning meeting (Sprint planning) - during that meeting we are set our priorities and what we can do during the current sprint (in next 2 weeks).
+
+* Daily meetings - this meeting is happening every WORKING DAY (it should be around 15 minutes!) and during that session we have to give an update to our team members about following points:
+	- what we did yesterday
+	- what we are going to do today
+	- whether we have any blockers 
+	- whether we need help about any ticket which we are working on. 
+Good practice in my opinion, during that session, someone from the team sharing the board with all the tickets 
+and we go through all the ticket (for current sprint) which are IN PROGRESS, IN TEST and DONE and provide updates about them. 
+
+* Refinment meetings - during that meeting we discuss the highest priority tickets in the backlog and we transform them into user stories and discuss which of them are ok/not ok to be included in the next sprint. 
+Usally this session is happening in the end of the current sprint.
+
+* Demo session - the purpose of that meeting is to present/show to the business people/stakeholders what we did during the past sprint. 
+Most often before that session - the team members discuss who and what will present. In some cases only one member from the team can lead the demo session.
+
+* Retrospective meetings - the purpose of that meeting is to define the performance of the team for the past sprint.
+All team members participate in the meeting and have to say their opinion.
+Most ofen that meeting is lead by the SCRUM MASTER of the team and before it, he creates a dashboard most often with 3 columns.
+The columns are: WHAT WENT WELL, WHAT WAS NOT OK, ACTIONS ITEMS.
+Each team member put sticky notes in the respective column and after that all team members discuss the sticky notes one by one.
+In the end of the meeting in ACTION ITEMS column, scrum master put sticky notes which are related to the sticky notes placed in WHAT WAS NOT OK column in order to avoid/fix that issues/problems for the next sprints.
