@@ -1,0 +1,5 @@
+Homework
+Answer all the questions from the StaticAndDesignTechniquesPrctice ppt in a separate Text file with the explanation of the answers.
+
+Materials:
+https://endava.sharepoint.com/sites/SchoolofAutomationTesting2021/Shared%20Documents/Forms/AllItems.aspx?csf=1&web=1&e=1ac0iR&cid=3a89a0bc%2Dddce%2D4515%2Db126%2D7db5bb3d0f1e&RootFolder=%2Fsites%2FSchoolofAutomationTesting2021%2FShared%20Documents%2FSoA%5F11%5F2021%2F06%2E%20Test%20Design%20Techniques&FolderCTID=0x012000D4F0840919FD2348A1BAF65CF20EFFD2

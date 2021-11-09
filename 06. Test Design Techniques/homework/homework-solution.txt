@@ -1,0 +1,37 @@
+1) B => because static analysis tools can help them to test any form of document including source code, design documents and models,
+functional specifications and requirement specifications.
+
+2) C => because only in that answer the states of the system is incorrect. It's not possible to Logout from Basket page.
+Based on the diagram, firstly you have to PAY and then LOGOUT.
+
+3) Б => in order to get 100% decision coverage we have to go through all possible decisions (if-else) statements!
+
+4) C => Becaseu the added code will be executed always whatever the outcome of the if-else statement and it's not needed to add any additional tests.
+
+5) A => because only that answers contains the VALID result based on the provided decision table.
+The answer is for Rule 2. 21-29 y.o. / Insurance class: A or B / Premium: 90 / Excess: 2,500
+
+6) B => because if you have the needed knowledge of the system, it will be easier for you to find defects and also 
+you can predict the area where bug can occur after developers do some changes/fixes.
+
+7) 
+
+8) A => because black box techniques check the application under test from the user’s perspective.
+These techniques are focused on the input that goes into the software, and the output that is produced.
+Also black box technique are mainly based on specification.
+For example: white box techniques are based on the code.
+
+
+9) D => because some tools of the static analysis are mainly focused on enforcment of coding standards.
+
+10) A => because we need to go through ONLY the if statements to provide full statement coverage! It's not needed to go through else statements
+
+11) C =>
+
+12) B => because if you want to have complete statement and branch coverage you have to test every statement and every branch in the program (code).
+
+13) A => because the objective of the testing is to identifying bugs and not fixing defects (the process of fixing defects is called debugging).
+
+14) A => because if the specification is outdated, we can use our experience and apply experience-based testing in order to find new defects.
+
+15) C => because for 100% statement coverage is needed to go through all if statements and in our case they are only 2.
