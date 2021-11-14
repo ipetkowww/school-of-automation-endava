@@ -1,0 +1,23 @@
+Homework:
+Explain in your own words the types of Testing through the SDLC and in the TEAM 3.0 in a Text file.
+
+Solution:
+
+* Functional testing - the purpose of that testing is to validate that system works as described in system requirements. Main goal of the testing - test the functionality of the product!
+
+* Non-functioanl testing - the purpose of that testing is to validate all components of the system which are not related to functionality of the system. 
+Example: usability, maintainbility.
+
+Types of Non-functional testing:
+- Usability testing = puprose is to test whether the software is easy to use, easy to learn.
+- Installability testing = purpose is to testing the installability of the software
+	* whether the software is easy to install
+	* whether after installation the softare will affect another programs
+	* whether the sofware is easy to be uninstalled
+- Load testing = purpose is to test the performance of the software under peak conditions
+- Stress testing = purpose is to test the whether the software is stable under heavy loads or extreme conditions
+- Performance testing = purpose is to test the software's speed and responsiveness under various conditions.
+- Volume testing = purpose is to test the performance of the system under a huge volume of data.
+- Confirmation testing = this type of testing is also called re-testing. The purpose of that testing is to verify that the defect which has been raised is already fixed and it's not reproducible.
+- Regression testing = the purpose of that testing is to re-test a previously tested components of the system to verify that no defects occurs after fix of another part of the system.
+- Maintenance testing = purpose is to verify whether system is easy to be updated and maintanable

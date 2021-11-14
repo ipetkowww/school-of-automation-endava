@@ -1,0 +1,2 @@
+Homework:
+Explain in your own words the types of Testing through the SDLC and in the TEAM 3.0 in a Text file.
