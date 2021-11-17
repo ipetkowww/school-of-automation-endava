@@ -1,0 +1,17 @@
+Homework:
+Describe the types of Test management and describe the processes with all the detail you understood.
+
+Solution:
+* Test Planning = creating a test plan which is a document which describes the scope of testing, approaches which we are going to use during the testing, needed resources.
+In that document we are describing what will be tested, who will tested, when we are going to start the testing and so on.
+In general the test plan gives detailed information about upcoming test activities and testing effort.
+
+* Test Estimation = used for providing how long a task would take to be completed. Estimating the testing effort is very important task!
+
+* Test Strategies = set of guidelines that explains test design and determines how testing needs to be done.
+
+* Test Monitoring and Control = the process of overseeing all the metrics necessary to ensure that the project is running well, on schedule, and not out of budget.
+
+* Test Report & Evaluation = describes the results of the the whole testing process (test coverage and exit criteria). The data used in test evaluation are based on the test results data and test result summary.
+
+
