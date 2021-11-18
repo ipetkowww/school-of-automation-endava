@@ -1,0 +1,26 @@
+Homework:
+1) Explain the communication flow of a Web application with your own words in a txt file.
+
+- The user sends request to the web server over the internet using any browser (example: Google Chrome)
+- The web server receive the request and forward this request to the appropriate web application server 
+- Then the web application server performs different back end processes (such as querying database or processing the data) and
+generate results of the requested data
+- Web application servers send the results to the web server
+- Web server return response to the client with the requested information (such as HTML resources, CSS resources, etc.)
+and then specific result (based on user's request from step 1) appears on the screen.
+
+2) Get all the locators as name -> value from the Register page of our SuT and add it in a txt file.
+
+- heading element ==> By.CssSelector("h2")
+- Mr. option ==> By.XPath("//input[@value='Mr.']/parent::label")
+- Mrs. option ==> By.XPath("//input[@value='Mrs.']/parent::label")
+- first name field ==> By.XPath("//input[@name='first_name']")
+- sir name field ==> By.XPath("//input[@name='sir_name']")
+- email field ==> By.CssSelector("input[type='email']")
+- password field ==> By.CssSelector("input[type='password']")
+- country field ==> By.XPath("//input[@name='country']")
+- city field ==> By.CssSelector("#city")
+- checkbox for I agree with terms ==> By.CssSelector("#TOS")
+- I agree with terms of service link ==> By.CssSelector(".checkbox a")
+- register button ==> By.CssSelector("#reg")
+- login button ==> By.XPath("//a[@name='btn-login']")
