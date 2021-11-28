@@ -1,22 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SimpleBookStore
+﻿namespace SimpleBookStore
 {
-    internal class Book
+    public class Book
     {
-        private string _title;
-        private string _description;
-        private Author _author;
+        private readonly string _title;
+        private readonly string _language;
+        private readonly int _pages;
+        private readonly string _authorName;
 
-        public string Title { get; set; }
+        public string Title { get { return _title; } }
+        public string Language { get { return _language; } }
 
-        public Book(string title, string description, Author author)
+        public int Pages { get { return _pages; } }
+        public string AuthorName { get { return _authorName; } }
+
+        public Book(string title, string language, int pages, string authorName)
         {
             _title = title;
-            _description = description;
-            _author = author;
+            _language = language;
+            _pages = pages;
+            _authorName = authorName;
         }
     }
 }

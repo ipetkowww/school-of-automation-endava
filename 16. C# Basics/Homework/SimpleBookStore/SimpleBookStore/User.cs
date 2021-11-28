@@ -1,68 +1,80 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-
-namespace SimpleBookStore
+﻿namespace SimpleBookStore
 {
-    internal class User : Person
+    public class User
     {
-        private string _username;
-        private string _password;
+        private readonly string _name;
+        private readonly string _email;
+        private readonly int _age;
+        private readonly string _username;
+        private readonly string _password;
+        private static DataBase _db;
 
-        public User(string name, string email, int age, string username, string password) : base(name, email, age)
+        public string Name { get { return _name; } }
+        public string Email { get { return _email; } }
+        public string UserName { get { return _username; } }
+        public int Age { get { return _age; } }
+
+        public string Password { get { return _password; } }
+
+        public User(string name, string email, int age, string username, string password)
         {
-            _username = name;
+            _name = name;
             _email = email;
             _age = age;
             _username = username;
             _password = password;
         }
 
-        public string UserName { get { return _username; } }
-        public int Age { get { return _age; } }
-
-        public string Password { get { return _password; } }
-
         public bool Register(User user)
         {
-            DataBase db = new DataBase();
-            bool isDataBaseExist = db.IsDataBaseExist();
+            _db = new DataBase();
+            bool isDataBaseExist = _db.IsDataBaseExist();
 
             if (!isDataBaseExist)
             {
-                db.CreateDatabaseWithUserData(user);
+                _db.CreateDatabaseWithUserData(user);
+                return true;
             }
-            else
+            string[] allRecords = _db.ReadDatabaseInformation();
+            foreach (string userFromDb in allRecords)
             {
-                string[] allRecords = db.ReadDatabaseInformation();
-                foreach (string userFromDb in allRecords)
+                string[] userRecord = userFromDb.Split(",");
+                string usernameFromDB = userRecord[1];
+                string emailFromDB = userRecord[3];
+
+                if (usernameFromDB.Equals(user.UserName) || emailFromDB.Equals(user.Email))
                 {
-                    string[] userRecord = userFromDb.Split(",");
-                    string usernameFromDB = userRecord[1];
-                    string emailFromDB = userRecord[3];
-                } 
+                    return false;
+                }
+            }
+            _db.AddNewUser(user);
+            return true;
+        }
+
+        public static bool Login(string username, string password)
+        {
+            if (_db == null)
+            {
+                _db = new DataBase();
             }
 
+            if (!_db.IsDataBaseExist())
+            {
+                return false;
+            }
+            string[] allRecords = _db.ReadDatabaseInformation();
+            foreach (string userFromDb in allRecords)
+            {
+                string[] userRecord = userFromDb.Split(",");
+                string usernameFromDB = userRecord[1];
+                string passwordFromDB = userRecord[2];
 
-
-
-            //List<User> users = db.Users;
-
-            //foreach (User currentUser in users)
-            //{
-            //    if (currentUser.UserName.Equals(user.UserName) || currentUser.Email.Equals(user.Email))
-            //    {
-            //        return false;
-            //    }
-            //}
-            //db.Users.Add(user);
-
-            //bool isDbExist = db.IsDataBaseExist("BookStoreDBUsers.txt");
-
-            
-
-            return true;
+                if (usernameFromDB.Equals(username) && passwordFromDB.Equals(password))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace SimpleBookStore
 {
-    internal class DataBase
+    public class DataBase
     {
         private static readonly string PATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + $@"\BookStoreDBUsers.csv";
 
@@ -23,17 +21,14 @@ namespace SimpleBookStore
             tw.WriteLine($"{user.Name},{user.UserName},{user.Password},{user.Email},{user.Age}");
         }
 
+        public void AddNewUser(User user)
+        {
+            File.AppendAllText(PATH, $"{user.Name},{user.UserName},{user.Password},{user.Email},{user.Age}" + Environment.NewLine);
+        }
+
         public string[] ReadDatabaseInformation()
         {
             return File.ReadAllLines(PATH);
         }
-
-        //public bool IsUserExist(User user)
-        //{
-        //else
-        //{
-        //    File.AppendAllText(PATH + $@"\{file}", $"{userData.Name},{userData.UserName},{userData.Email},{userData.Age}" + Environment.NewLine);
-        //}
-        //}
     }
 }
