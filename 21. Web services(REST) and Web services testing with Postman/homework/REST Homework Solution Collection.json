@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "336fa663-c5b7-4786-adad-948fc31b43ec",
+		"name": "REST Homework",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify user successfully created\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.email).to.eq(pm.globals.get(\"email\"));\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.clear();\r",
+							"const email = \"testuser\" + Math.floor((Math.random() * 10000000) + 1) + \"@domain.com\";\r",
+							"pm.globals.set(\"email\", email);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Mr.\",\r\n    \"first_name\": \"Ivan\",\r\n    \"sir_name\": \"Petkov\",\r\n    \"country\": \"Bulgaria\",\r\n    \"city\": \"Burgas\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"password123\",\r\n    \"is_admin\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{usersEndpoint}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{usersEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Status Code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.globals.set(\"lastCreatedUserId\", jsonData[jsonData.length - 1].id);\r",
+							"pm.globals.set(\"allUserIDs\", jsonData.map((i) => i.id));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/{{usersEndpoint}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{usersEndpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET User By ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var userData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Veriy Last Created User Id Is Correct\", () => {\r",
+							"    pm.expect(userData.id).to.eq(pm.globals.get(\"lastCreatedUserId\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify Email Of Last Created User Is Eqaul To Email Of Last User In Reponse\", () => {\r",
+							"    pm.expect(userData.email).to.eq(pm.globals.get(\"email\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/{{usersEndpoint}}/{{lastCreatedUserId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{usersEndpoint}}",
+						"{{lastCreatedUserId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE User By ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var userData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Verify Status Code Of Request is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify Email Of Last Created User Is Updated\", () => {\r",
+							"    pm.expect(userData.email).to.not.eq(pm.globals.get(\"email\")); \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify Updated Email Of Last Created User Is ==> emailupdate@update.com\", () => {\r",
+							"    pm.expect(userData.email).to.eq(\"emailupdate@update.com\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"title\" : \"Mr.\",\r\n      \"first_name\" : \"Ivan\",\r\n      \"sir_name\" : \"Petkov\",\r\n      \"country\" : \"Bulgaria\",\r\n      \"city\" : \"Burgas\",\r\n      \"email\": \"emailupdate@update.com\"\r\n   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/{{usersEndpoint}}/{{lastCreatedUserId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{usersEndpoint}}",
+						"{{lastCreatedUserId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE User By ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.sendRequest({\r",
+							"    url: 'http://localhost:5000/users',\r",
+							"    method: 'GET',\r",
+							"}, (err, res) => {\r",
+							"    pm.globals.set(\"allUserIDs\", res.json().map((i) => i.id));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Delete Last Created User\", () => {\r",
+							"    pm.expect(pm.response.json()).to.eq(\"User deleted successfully!\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify Deleted User ID does not exist anymore\", () => {\r",
+							"    var isLastIDExist = pm.globals.get(\"lastCreatedUserId\") in pm.globals.get(\"allUserIDs\");\r",
+							"    pm.expect(isLastIDExist).to.be.false;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/{{usersEndpoint}}/{{lastCreatedUserId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{{usersEndpoint}}",
+						"{{lastCreatedUserId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify not able to login with not existing user\", () => {\r",
+							"    pm.expect(pm.response.json().message).to.eq(\"Invalid user or email\")\r",
+							"});\r",
+							"\r",
+							"pm.globals.clear();"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"userdoesnotexist@test.com\",\r\n    \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
