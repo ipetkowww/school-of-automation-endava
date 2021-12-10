@@ -1,0 +1,41 @@
+1. Извадете списък на всички поръчки, където има продукт ‘Chang’;
+
+SELECT * FROM OrderDetails
+INNER JOIN Products
+ON OrderDetails.ProductID = Products.ProductID
+WHERE ProductName LIKE "Chang%";
+
+
+2. Извадете всички имена на клиенти, които са си поръчали продукт ‘Chais’;
+
+SELECT CustomerName
+FROM Customers as c
+INNER JOIN Orders as o ON c.CustomerID = o.CustomerID
+INNER JOIN OrderDetails as od ON od.OrderID = o.OrderID
+INNER JOIN Products as p ON p.ProductID = od.ProductID
+WHERE ProductName = "Chais";
+
+
+3. Извадете списък на всички потребители, които имат по повече от една поръчка;
+
+SELECT o.CustomerID, c.CustomerName, c.Address, c.City, COUNT(o.CustomerID) as ordersPerCustomer
+FROM Orders as o
+JOIN Customers as c ON
+c.CustomerID = o.CustomerID
+GROUP BY o.CustomerID
+HAVING ordersPerCustomer > 1;
+
+
+4. Извадете списък на всички потребители, които са направили поръчки на обща стойност над 500 (USD);
+
+SELECT c.CustomerName, c.City, c.Address, SUM(p.Price * od.Quantity) as ordersTotalPrice
+FROM Customers as c
+INNER JOIN Orders as o ON c.CustomerID = o.CustomerID
+INNER JOIN OrderDetails as od ON od.OrderID = o.OrderID
+INNER JOIN Products as p ON p.ProductID = od.ProductID
+GROUP BY (p.Price)
+HAVING ordersTotalPrice > 500
+ORDER BY ordersTotalPrice ASC;
+
+
+Кодинг граунд: https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_no_distinct
