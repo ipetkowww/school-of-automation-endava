@@ -1,9 +1,13 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using System;
 
 namespace AutomationForHomeworkTasks.Pages
 {
     public class BasePage
     {
+        protected static readonly int Timeout10Seconds = 10;
         protected IWebDriver _driver;
 
         public BasePage(IWebDriver driver)
@@ -11,25 +15,30 @@ namespace AutomationForHomeworkTasks.Pages
             _driver = driver;
         }
 
-        public void FillTextInElement(By locator, string text)
+        protected void FillTextInElement(By locator, string text)
         {
             FindElement(locator).Clear();
             FindElement(locator).SendKeys(text);
         }
 
-        public IWebElement FindElement(By locator)
+        protected IWebElement FindElement(By locator)
         {
             return _driver.FindElement(locator);
         }
 
-        public void Click(By locator)
+        protected void Click(By locator)
         {
             FindElement(locator).Click();
         }
 
-        public string GetElementText(By locator)
+        protected string GetElementText(By locator)
         {
             return FindElement(locator).Text;
+        }
+
+        protected void WaitForElementToLoad(By locator, int timeoutInSeconds)
+        {
+            new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutInSeconds)).Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
         }
     }
 }

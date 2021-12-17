@@ -4,7 +4,7 @@ namespace AutomationForHomeworkTasks.Pages
 {
     public class HomePage : BasePage
     {
-        private static readonly By loggedInInfo = By.CssSelector(".dropdown-toggle");
+        private static readonly By LoggedInInfo = By.CssSelector(".dropdown-toggle");
 
         public HomePage(IWebDriver driver) : base(driver)
         {
@@ -12,7 +12,8 @@ namespace AutomationForHomeworkTasks.Pages
 
         public string GetLoggedInfo()
         {
-            return GetElementText(loggedInInfo);
+            WaitForElementToLoad(LoggedInInfo, Timeout10Seconds);
+            return GetElementText(LoggedInInfo);
         }
     }
 }
