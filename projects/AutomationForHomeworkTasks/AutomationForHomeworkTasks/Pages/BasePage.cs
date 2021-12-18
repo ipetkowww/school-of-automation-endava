@@ -38,7 +38,7 @@ namespace AutomationForHomeworkTasks.Pages
 
         protected void WaitForElementToLoad(By locator, int timeoutInSeconds)
         {
-            new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutInSeconds)).Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
+            new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutInSeconds)).Until(ExpectedConditions.ElementExists(locator));
         }
     }
 }
