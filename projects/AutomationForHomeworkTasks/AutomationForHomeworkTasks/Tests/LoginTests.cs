@@ -1,4 +1,7 @@
-﻿using AutomationForHomeworkTasks.Pages;
+﻿using AutomationForHomeworkTasks.Config;
+using AutomationForHomeworkTasks.Constants;
+using AutomationForHomeworkTasks.Pages;
+using AutomationForHomeworkTasks.TestData;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -8,7 +11,6 @@ namespace AutomationForHomeworkTasks.Tests
 {
     public class LoginTests
     {
-        private static readonly string Url = "http://localhost:8080";
         private IWebDriver _driver;
         private LoginPage _loginPage;
 
@@ -17,18 +19,17 @@ namespace AutomationForHomeworkTasks.Tests
         {
             _driver = new ChromeDriver();
             _driver.Manage().Window.Maximize();
-            _driver.Navigate().GoToUrl(Url);
+            _driver.Navigate().GoToUrl(ConfigProvider.GetConfigValue[StringConstants.Url]);
             _loginPage = new(_driver);
         }
 
         [Test]
         public void SuccessfulLoginWithValidCredentials()
         {
-            string email = "admin@automation.com";
-            string password = "pass123";
+            string email = UserTestData.ValidEmail;
 
             _loginPage.FillEmailAddress(email);
-            _loginPage.FillPassword(password);
+            _loginPage.FillPassword(UserTestData.ValidPassword);
 
             HomePage homePage = _loginPage.ClickLoginButton();
             string actualLoggedInfo = homePage.GetLoggedInfo().Trim();
@@ -38,8 +39,8 @@ namespace AutomationForHomeworkTasks.Tests
         }
 
         [Test]
-        [TestCase("invalidEmail@test.com", "pass123")]
-        [TestCase("admin@automation.com", "invalidPassword")]
+        [TestCase(UserTestData.InvalidEmail, UserTestData.ValidPassword)]
+        [TestCase(UserTestData.ValidEmail, UserTestData.InvalidPassword)]
         public void TryToLoginWithInvalidCredentials(string email, string password)
         {
             _loginPage.FillEmailAddress(email);
@@ -48,10 +49,9 @@ namespace AutomationForHomeworkTasks.Tests
 
             bool isErrorDisplayed = _loginPage.IsErrorMessageDisplayed();
             string actualTextOfErrorMessage = _loginPage.GetErrorMessageText();
-            string expectedTextOfErrorMessage = "Invalid user or email";
 
             IsTrue(isErrorDisplayed, "Error message was not displayed.");
-            AreEqual(expectedTextOfErrorMessage, actualTextOfErrorMessage, "Text of error message is not correct.");
+            AreEqual("Invalid user or email", actualTextOfErrorMessage, "Text of error message is not correct.");
         }
 
         [TearDown]
