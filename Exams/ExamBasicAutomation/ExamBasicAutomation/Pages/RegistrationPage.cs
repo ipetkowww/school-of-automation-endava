@@ -14,9 +14,6 @@ namespace ExamBasicAutomation.Pages
         private static readonly By _mobilePhoneField = By.CssSelector("#phone_mobile");
         private static readonly By _aliasField = By.CssSelector("#alias");
         private static readonly By _registerButton = By.CssSelector("#submitAccount");
-        private static readonly By _days = By.CssSelector("#days");
-        private static readonly By _months = By.CssSelector("#months");
-        private static readonly By _years = By.CssSelector("#years");
 
         public RegistrationPage(IWebDriver driver) : base(driver)
         {
