@@ -18,7 +18,6 @@ namespace ExamBasicAutomation.Pages
         private static readonly By _months = By.CssSelector("#months");
         private static readonly By _years = By.CssSelector("#years");
 
-
         public RegistrationPage(IWebDriver driver) : base(driver)
         {
             _driver = driver;
@@ -38,13 +37,6 @@ namespace ExamBasicAutomation.Pages
         public void EnterPassword(string password)
         {
             FillTextInElement(_passwordField, password);
-        }
-
-        public void SelectDateOfBirth(int day, int month, int year)
-        {
-            GetSelectDropdownElement(_days).SelectByText(day.ToString());
-            GetSelectDropdownElement(_months).SelectByText(month.ToString());
-            GetSelectDropdownElement(_years).SelectByText(year.ToString());
         }
 
         public void EnterAddress(string address)
