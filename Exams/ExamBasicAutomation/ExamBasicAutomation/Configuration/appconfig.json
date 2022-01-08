@@ -1,0 +1,4 @@
+﻿{
+  "HomePageURL": "http://automationpractice.com/index.php",
+  "AuthenticationPageURL": "http://automationpractice.com/index.php?controller=authentication&back=my-account"
+}
