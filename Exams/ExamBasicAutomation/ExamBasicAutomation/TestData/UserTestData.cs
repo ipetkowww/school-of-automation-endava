@@ -4,7 +4,7 @@ namespace ExamBasicAutomation.TestData
 {
     public class UserTestData
     {
-        private static readonly Random getRandom = new Random();
+        private static readonly Random getRandom = new();
 
         public static readonly string RegistrationEmail = $"AutoEmail{GetRandomNUmber(1, 99999999)}@bqgai.com";
 

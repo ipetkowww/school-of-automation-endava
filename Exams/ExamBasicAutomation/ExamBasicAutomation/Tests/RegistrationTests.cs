@@ -40,7 +40,7 @@ namespace ExamBasicAutomation.Tests
             registrationPage.EnterAddressAlias(UserTestData.AddressAlias);
             MyAccountPage myAccountPage = registrationPage.ClickRegisterButton();
 
-            string actualFirstAndLastName = myAccountPage.getFirstAndLastName();
+            string actualFirstAndLastName = myAccountPage.GetFirstAndLastName();
             string expectedFirstAndLastName = $"{UserTestData.FirstName} {UserTestData.LastName}";
 
             IsTrue(myAccountPage.IsDisplayed(), $"{AppConstants.MyAccountPageHeading} is not displayed");

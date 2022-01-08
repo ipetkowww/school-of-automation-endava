@@ -13,12 +13,12 @@ namespace ExamBasicAutomation.Pages
             _driver = driver;
         }
 
-        public string getPageHeadingText()
+        public string GetPageHeadingText()
         {
             return GetElementText(_pageHeading);
         }
 
-        public string getFirstAndLastName()
+        public string GetFirstAndLastName()
         {
             return GetElementText(_firstAndLastName);
         }
