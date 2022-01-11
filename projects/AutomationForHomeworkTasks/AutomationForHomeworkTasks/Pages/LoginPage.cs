@@ -23,10 +23,9 @@ namespace AutomationForHomeworkTasks.Pages
             FillTextInElement(PasswordField, password);
         }
 
-        public HomePage ClickLoginButton()
+        public void ClickLoginButton()
         {
             Click(LoginButton);
-            return new HomePage(_driver);
         }
 
         public bool IsErrorMessageDisplayed()

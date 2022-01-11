@@ -2,7 +2,7 @@
 {
     public class StringConstants
     {
-        public const string Url = "Url";
+        public const string BaseUrl = "BaseUrl";
         public const string ConfigFolderName = "Config";
         public const string AppConfigJsonFileName = "appconfig.json";
     }

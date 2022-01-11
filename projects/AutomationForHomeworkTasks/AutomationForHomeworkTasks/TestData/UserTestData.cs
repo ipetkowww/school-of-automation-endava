@@ -2,9 +2,7 @@
 {
     public class UserTestData
     {
-        public const string ValidEmail = "admin@automation.com";
-        public const string ValidPassword = "pass123";
-        public const string InvalidEmail = "invalidEmail@test.com";
-        public const string InvalidPassword = "invalidPassword";
+        public string Email;
+        public string Password;
     }
 }
