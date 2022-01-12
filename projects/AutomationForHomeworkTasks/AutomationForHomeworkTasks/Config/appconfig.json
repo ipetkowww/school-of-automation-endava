@@ -1,3 +1,8 @@
 ﻿{
-  "BaseUrl": "http://localhost:8080/"
+  "BaseUrl": "http://localhost:8080/",
+
+  "Pages": {
+    "login": "login.php",
+    "register": "register.php"
+  }
 }

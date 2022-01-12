@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using AutomationForHomeworkTasks.Config;
+using AutomationForHomeworkTasks.Constants;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
@@ -39,6 +41,14 @@ namespace AutomationForHomeworkTasks.Pages
         protected void WaitForElementToLoad(By locator, int timeoutInSeconds)
         {
             new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutInSeconds)).Until(ExpectedConditions.ElementExists(locator));
+        }
+
+        public void OpenPage(string pageName)
+        {
+            string baseUrl = ConfigProvider.GetConfigValue[StringConstants.BaseUrl];
+            string page = ConfigProvider.GetConfigValue[$"{StringConstants.Pages}:{pageName.ToLower()}"];
+            string url = $"{baseUrl}{page}";
+            _driver.Navigate().GoToUrl(url);
         }
     }
 }

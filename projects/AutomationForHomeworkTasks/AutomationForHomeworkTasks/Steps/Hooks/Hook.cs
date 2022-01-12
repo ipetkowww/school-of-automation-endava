@@ -18,7 +18,6 @@ namespace AutomationForHomeworkTasks.Steps.Hooks
         {
             _driver = new ChromeDriver();
             _driver.Manage().Window.Maximize();
-            _driver.Navigate().GoToUrl(ConfigProvider.GetConfigValue[StringConstants.BaseUrl]);
         }
 
         [AfterScenario]

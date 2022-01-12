@@ -7,6 +7,7 @@ namespace AutomationForHomeworkTasks.Config
     public static class ConfigProvider
     {
         public static IConfiguration GetConfigValue { get; }
+        public static string GetAppPages { get; }
 
         static ConfigProvider()
         {

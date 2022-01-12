@@ -9,18 +9,13 @@ namespace AutomationForHomeworkTasks.Steps
     [Binding]
     public class LoginSteps
     {
-        private LoginPage _loginPage;
+        private readonly LoginPage _loginPage;
         private readonly UserTestData _userTestData;
 
         public LoginSteps(UserTestData userTestData)
         {
-            _userTestData = userTestData;
-        }
-
-        [Given(@"Login page is opened")]
-        public void GivenLoginPageIsOpened()
-        {
             _loginPage = new LoginPage(Hook.Driver);
+            _userTestData = userTestData;
         }
 
         [When(@"The user logs in with email ""([^""]*)"" and password ""([^""]*)""")]
