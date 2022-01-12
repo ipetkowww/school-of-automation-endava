@@ -1,43 +1,39 @@
-﻿using OpenQA.Selenium;
+﻿using AutomationForHomeworkTasks.UIElements;
+using OpenQA.Selenium;
 
 namespace AutomationForHomeworkTasks.Pages
 {
     public class LoginPage : BasePage
     {
-        private static readonly By EmailField = By.CssSelector("input[type='email']");
-        private static readonly By PasswordField = By.CssSelector("input[type='password']");
-        private static readonly By LoginButton = By.CssSelector(".btn-primary");
-        private static readonly By ErrorMessage = By.CssSelector(".alert-danger");
-
         public LoginPage(IWebDriver driver) : base(driver)
         {
         }
 
         public void FillEmailAddress(string email)
         {
-            FillTextInElement(EmailField, email);
+            FillTextInElement(LoginPageUIElements.EmailField, email);
         }
 
         public void FillPassword(string password)
         {
-            FillTextInElement(PasswordField, password);
+            FillTextInElement(LoginPageUIElements.PasswordField, password);
         }
 
         public void ClickLoginButton()
         {
-            Click(LoginButton);
+            Click(LoginPageUIElements.LoginButton);
         }
 
         public bool IsErrorMessageDisplayed()
         {
-            WaitForElementToLoad(ErrorMessage, Timeout10Seconds);
-            return FindElement(ErrorMessage).Displayed;
+            WaitForElementToLoad(LoginPageUIElements.ErrorMessage, Timeout10Seconds);
+            return FindElement(LoginPageUIElements.ErrorMessage).Displayed;
         }
 
         public string GetErrorMessageText()
         {
-            WaitForElementToLoad(ErrorMessage, Timeout10Seconds);
-            return GetElementText(ErrorMessage);
+            WaitForElementToLoad(LoginPageUIElements.ErrorMessage, Timeout10Seconds);
+            return GetElementText(LoginPageUIElements.ErrorMessage);
         }
     }
 }

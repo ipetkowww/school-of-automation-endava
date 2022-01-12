@@ -1,6 +1,4 @@
-﻿using AutomationForHomeworkTasks.Config;
-using AutomationForHomeworkTasks.Constants;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
