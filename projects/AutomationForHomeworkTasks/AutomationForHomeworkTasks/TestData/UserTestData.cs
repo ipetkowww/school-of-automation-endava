@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace AutomationForHomeworkTasks.TestData
+﻿namespace AutomationForHomeworkTasks.TestData
 {
     public class UserTestData
     {

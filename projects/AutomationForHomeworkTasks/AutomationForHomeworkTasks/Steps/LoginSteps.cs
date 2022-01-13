@@ -1,8 +1,8 @@
 ﻿using AutomationForHomeworkTasks.Pages;
-using AutomationForHomeworkTasks.Steps.Hooks;
 using AutomationForHomeworkTasks.TestData;
-using static NUnit.Framework.Assert;
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
+using static NUnit.Framework.Assert;
 
 namespace AutomationForHomeworkTasks.Steps
 {
@@ -11,10 +11,12 @@ namespace AutomationForHomeworkTasks.Steps
     {
         private readonly LoginPage _loginPage;
         private readonly UserTestData _userTestData;
+        private readonly IWebDriver _driver;
 
-        public LoginSteps(UserTestData userTestData)
+        public LoginSteps(IWebDriver driver, UserTestData userTestData)
         {
-            _loginPage = new LoginPage(Hook.Driver);
+            _driver = driver;
+            _loginPage = new LoginPage(_driver);
             _userTestData = userTestData;
         }
 

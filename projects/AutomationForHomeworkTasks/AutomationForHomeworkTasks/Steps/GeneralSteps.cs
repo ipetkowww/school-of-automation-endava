@@ -1,5 +1,6 @@
 ﻿using AutomationForHomeworkTasks.Pages;
 using AutomationForHomeworkTasks.Steps.Hooks;
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace AutomationForHomeworkTasks.Steps
@@ -7,11 +8,13 @@ namespace AutomationForHomeworkTasks.Steps
     [Binding]
     public class GeneralSteps
     {
+        private readonly IWebDriver _driver;
         private readonly BasePage _basePage;
 
-        public GeneralSteps()
+        public GeneralSteps(IWebDriver driver)
         {
-            _basePage = new BasePage(Hook.Driver);
+            _driver = driver;
+            _basePage = new BasePage(_driver);
         }
 
         [Given(@"""([^""]*)"" page is opened")]
