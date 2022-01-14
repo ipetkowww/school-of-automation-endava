@@ -37,6 +37,5 @@ namespace AutomationForHomeworkTasks.Steps
             AreEqual(expectedUserTitleAndName, actualUserTitleAndName, "User title and name are not correct.");
 
         }
-
     }
 }
