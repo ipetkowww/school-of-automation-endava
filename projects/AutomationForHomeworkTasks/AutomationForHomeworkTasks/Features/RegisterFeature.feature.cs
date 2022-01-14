@@ -106,6 +106,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("\"Register\" page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Title",
                             "First name",
                             "Sir name",
                             "Email",
@@ -113,6 +114,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Country",
                             "City"});
                 table1.AddRow(new string[] {
+                            "Mr.",
                             "Ivan",
                             "Petkov",
                             "RANDOM_EMAIL",
@@ -130,6 +132,70 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 11
  testRunner.Then("The user is successfully registered", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Unsuccessful Registration with Already Registered Email")]
+        [NUnit.Framework.CategoryAttribute("tag1")]
+        public virtual void UnsuccessfulRegistrationWithAlreadyRegisteredEmail()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "tag1"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unsuccessful Registration with Already Registered Email", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 14
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 15
+ testRunner.Given("\"Register\" page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Title",
+                            "First name",
+                            "Sir name",
+                            "Email",
+                            "Password",
+                            "Country",
+                            "City"});
+                table2.AddRow(new string[] {
+                            "Mr.",
+                            "Ivan",
+                            "Petkov",
+                            "admin@automation.com",
+                            "secret123",
+                            "Bulgaria",
+                            "Burgas"});
+#line 16
+ testRunner.When("The user fills following data for registration:", ((string)(null)), table2, "When ");
+#line hidden
+#line 19
+ testRunner.And("The user clicks on agree with terms of service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 20
+ testRunner.And("The user clicks on Register button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 21
+ testRunner.Then("The error message for already existing email is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

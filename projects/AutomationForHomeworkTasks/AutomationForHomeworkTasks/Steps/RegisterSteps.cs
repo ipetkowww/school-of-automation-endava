@@ -5,6 +5,7 @@ using AutomationForHomeworkTasks.TestData;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using static NUnit.Framework.Assert;
 
 namespace AutomationForHomeworkTasks.Steps
 {
@@ -12,33 +13,36 @@ namespace AutomationForHomeworkTasks.Steps
     public class RegisterSteps
     {
         private readonly IWebDriver _driver;
-        private readonly ScenarioContext _scenarioContext;
         private readonly RegisterPage _registerPage;
-        private UserTestData _userTestData;
+        private readonly UserTestData _userTestData;
 
-        public RegisterSteps(IWebDriver driver, ScenarioContext scenarioContext, UserTestData userTestData)
+        public RegisterSteps(IWebDriver driver, UserTestData userTestData)
         {
             _driver = driver;
             _registerPage = new RegisterPage(_driver);
-            _scenarioContext = scenarioContext;
             _userTestData = userTestData;
         }
 
         [When(@"The user fills following data for registration:")]
         public void WhenTheUserFillsFollowingDataForRegistration(Table table)
         {
-            _userTestData = table.CreateInstance<UserTestData>();
-            if (_userTestData.Email == StringConstants.RandomEmail)
+            UserTestData currentUser = table.CreateInstance<UserTestData>();
+            if (currentUser.Email == StringConstants.RandomEmail)
             {
-                _userTestData.Email = $"reg_email{Helper.GetAlphaNumericString()}@autotest.com";
+                currentUser.Email = $"reg_email{Helper.GetAlphaNumericString()}@autotest.com";
             }
-            _scenarioContext.Add("userForRegistration", _userTestData);
-            _registerPage.EnterFirstName(_userTestData.FirstName);
-            _registerPage.EnterSirName(_userTestData.SirName);
-            _registerPage.EnterEmail(_userTestData.Email);
-            _registerPage.EnterPassword(_userTestData.Password);
-            _registerPage.EnterCountry(_userTestData.Country);
-            _registerPage.EnterCity(_userTestData.City);
+            _registerPage.EnterFirstName(currentUser.FirstName);
+            _registerPage.EnterSirName(currentUser.SirName);
+            _registerPage.EnterEmail(currentUser.Email);
+            _registerPage.EnterPassword(currentUser.Password);
+            _registerPage.EnterCountry(currentUser.Country);
+            _registerPage.EnterCity(currentUser.City);
+            _registerPage.SelectTitle(currentUser.Title);
+
+            _userTestData.Title = currentUser.Title;
+            _userTestData.FirstName = currentUser.FirstName;
+            _userTestData.SirName = currentUser.SirName;
+            _userTestData.Email = currentUser.Email;
         }
 
         [When(@"The user clicks on agree with terms of service")]
@@ -51,6 +55,12 @@ namespace AutomationForHomeworkTasks.Steps
         public void WhenTheUserClicksOnRegisterButton()
         {
             _registerPage.ClickRegisterButton();
+        }
+
+        [Then(@"The error message for already existing email is displayed")]
+        public void ThenTheErrorMessageForAlreadyExistingEmailIsDisplayed()
+        {
+            IsTrue(_registerPage.IsAlreadyExistingMailErrorDisplayed(), "Error for already existing email is not displayed");
         }
     }
 }

@@ -20,5 +20,11 @@ namespace AutomationForHomeworkTasks.Pages
             WaitForElementToLoad(HomePageUIElements.ErrorMessage, Timeout10Seconds);
             return FindElement(HomePageUIElements.ErrorMessage).Displayed;
         }
+
+        public string GetUserTitleAndName()
+        {
+            WaitForElementToLoad(HomePageUIElements.UserTitleAndName, Timeout10Seconds);
+            return GetElementText(HomePageUIElements.UserTitleAndName).Split(", ")[1];
+        }
     }
 }

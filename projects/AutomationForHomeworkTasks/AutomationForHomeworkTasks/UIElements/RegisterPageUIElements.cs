@@ -12,5 +12,6 @@ namespace AutomationForHomeworkTasks.UIElements
         public static readonly By City = By.CssSelector("#city");
         public static readonly By AgreeTermsOfService = By.CssSelector("#TOS");
         public static readonly By RegisterButton = By.CssSelector("#reg");
+        public static readonly By EmailAlreadyExistError = By.CssSelector(".alert-warning");
     }
 }

@@ -2,6 +2,7 @@
 {
     public class UserTestData
     {
+        public string Title { get; set; }
         public string FirstName { get; set; }
         public string SirName { get; set; }
         public string Email { get; set; }

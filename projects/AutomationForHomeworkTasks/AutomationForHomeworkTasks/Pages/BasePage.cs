@@ -50,5 +50,11 @@ namespace AutomationForHomeworkTasks.Pages
             string url = $"{baseUrl}{page}";
             _driver.Navigate().GoToUrl(url);
         }
+
+        public bool IsElementDisplayed(By locator)
+        {
+            WaitForElementToLoad(locator, Timeout10Seconds);
+            return FindElement(locator).Displayed;
+        }
     }
 }

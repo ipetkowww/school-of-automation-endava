@@ -25,15 +25,17 @@ namespace AutomationForHomeworkTasks.Steps
         {
             string actualLoggedInfo = _homePage.GetLoggedInfo().Trim();
             string expectedLoggedInfo = $"Logged in: {_userTestData.Email}";
-            AreEqual(expectedLoggedInfo, actualLoggedInfo, "Logged Info Incorrect!");
+            AreEqual(expectedLoggedInfo, actualLoggedInfo, "Logged Info Incorrect.");
         }
 
         [Then(@"The user is successfully registered")]
         public void ThenTheUserIsSuccessfullyRegistered()
         {
-            string actualLoggedInfo = _homePage.GetLoggedInfo().Trim();
-            string expectedLoggedInfo = $"Logged in: {_userTestData.Email}";
-            AreEqual(expectedLoggedInfo, actualLoggedInfo, "Logged Info Incorrect!");
+            ThenTheUserIsLoggedInSuccessfully();
+            string actualUserTitleAndName = _homePage.GetUserTitleAndName().Trim();
+            string expectedUserTitleAndName = $"{_userTestData.Title} {_userTestData.FirstName} {_userTestData.SirName}";
+            AreEqual(expectedUserTitleAndName, actualUserTitleAndName, "User title and name are not correct.");
+
         }
 
     }

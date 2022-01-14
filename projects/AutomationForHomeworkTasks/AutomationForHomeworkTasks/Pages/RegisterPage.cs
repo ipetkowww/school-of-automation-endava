@@ -49,5 +49,15 @@ namespace AutomationForHomeworkTasks.Pages
         {
             Click(RegisterPageUIElements.RegisterButton);
         }
+        public void SelectTitle(string userTitleValue)
+        {
+            By userTitleLocator = By.XPath($"//input[@value='{userTitleValue}']/parent::label");
+            Click(userTitleLocator);
+        }
+
+        public bool IsAlreadyExistingMailErrorDisplayed()
+        {
+            return IsElementDisplayed(RegisterPageUIElements.EmailAlreadyExistError);
+        }
     }
 }
