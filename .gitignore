@@ -410,3 +410,8 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# SpecFlow specific
+*.feature.cs
+*.feature.xlsx.*
+*.Specs_*.html
