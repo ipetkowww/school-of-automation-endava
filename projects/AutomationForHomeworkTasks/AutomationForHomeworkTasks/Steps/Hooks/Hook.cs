@@ -16,7 +16,7 @@ namespace AutomationForHomeworkTasks.Steps.Hooks
             _objectContainer = objectContainer;
         }
 
-        [BeforeScenario]
+        [BeforeScenario("ui")]
         public void BeforeScenario()
         {
             _driver = new ChromeDriver();

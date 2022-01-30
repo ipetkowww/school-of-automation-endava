@@ -1,6 +1,6 @@
-﻿Feature: Registration Tests
+﻿@ui @register
+Feature: Registration Tests
 
-@registartion
 Scenario Outline: Successful Registration
 	Given "Register" page is opened
 	When The user fills following data for registration:
@@ -10,7 +10,6 @@ Scenario Outline: Successful Registration
 	And The user clicks on Register button
 	Then The user is successfully registered
 
-@registration
 Scenario: Unsuccessful Registration with Already Registered Email
 	Given "Register" page is opened
 	When The user fills following data for registration:

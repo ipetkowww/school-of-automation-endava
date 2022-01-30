@@ -10,6 +10,8 @@ namespace AutomationForHomeworkTasks.Steps
         private readonly IWebDriver _driver;
         private readonly BasePage _basePage;
 
+        public GeneralSteps() { }
+
         public GeneralSteps(IWebDriver driver)
         {
             _driver = driver;
