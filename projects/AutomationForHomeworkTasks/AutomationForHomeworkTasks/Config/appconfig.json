@@ -1,6 +1,6 @@
 ﻿{
   "BaseUrl": "http://localhost:8080/",
-  "RestBaseUrl": "http://localhost:5000",
+  "RestBaseUrl": "https://petstore.swagger.io/v2",
 
   "Pages": {
     "login": "login.php",

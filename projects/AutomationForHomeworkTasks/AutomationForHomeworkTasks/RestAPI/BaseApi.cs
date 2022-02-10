@@ -1,11 +1,8 @@
 ﻿using AutomationForHomeworkTasks.Config;
 using AutomationForHomeworkTasks.Constants;
 using AutomationForHomeworkTasks.Models;
-using Newtonsoft.Json;
 using RestSharp;
-using System;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace AutomationForHomeworkTasks.RestAPI
 {
@@ -24,13 +21,58 @@ namespace AutomationForHomeworkTasks.RestAPI
 
         public void GetRequest(string endpoint)
         {
-            var request = new RestRequest(endpoint, Method.Get);
-            _response = _restClient.ExecuteAsync(request).GetAwaiter().GetResult();
+            ExecuteRequest(new RestRequest(endpoint, Method.Get));
         }
 
         public T GetResponseData<T>()
         {
             return JsonConvert.DeserializeObject<T>(_response.Content);
+        }
+
+        public void PostRequest(string endpoint, User user)
+        {
+            var userForCreation = GetUserModel(user);
+            ExecuteRequest(new RestRequest(endpoint, Method.Post).AddJsonBody(userForCreation));
+        }
+
+        public void PutRequest(string endpoint, User user)
+        {
+            var userForEdit = GetUserModel(user);
+            ExecuteRequest(new RestRequest(endpoint, Method.Put).AddJsonBody(userForEdit));
+        }
+
+        public void DeleteRequest(string endpoint)
+        {
+            ExecuteRequest(new RestRequest(endpoint, Method.Delete));
+        }
+
+        private static User GetUserModel(User user)
+        {
+            return new User
+            {
+                Id = user.Id,
+                Username = user.Username,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Password = user.Password,
+                Phone = user.Phone,
+                UserStatus = user.UserStatus,
+            };
+        }
+
+        private void ExecuteRequest(RestRequest request)
+        {
+            int attempt = 1;
+            while (attempt <= 5)
+            {
+                _response = _restClient.ExecuteAsync(request).GetAwaiter().GetResult();
+                if (_response.IsSuccessful)
+                {
+                    break;
+                }
+                attempt++;
+            }
         }
     }
 }

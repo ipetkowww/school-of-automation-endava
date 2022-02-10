@@ -24,8 +24,8 @@ namespace AutomationForHomeworkTasks.Steps.Hooks
             _objectContainer.RegisterInstanceAs<IWebDriver>(_driver);
         }
 
-        [AfterScenario]
-        public void AfterScenario()
+        [AfterScenario("ui")]
+        public void AfterUIScenarios()
         {
             if (_driver != null)
             {
