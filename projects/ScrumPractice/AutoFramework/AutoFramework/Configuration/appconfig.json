@@ -1,0 +1,6 @@
+﻿{
+  "BaseUrl": "",
+  "Pages": {
+    "login": "admin/login/"
+  }
+}
