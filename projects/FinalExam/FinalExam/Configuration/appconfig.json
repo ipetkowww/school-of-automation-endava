@@ -1,0 +1,9 @@
+﻿{
+  "BaseUrl": "https://parabank.parasoft.com/parabank/",
+  "RestBaseUrl": "https://gorest.co.in/public/v2",
+  "Pages": {
+    "login": "login.php",
+    "register": "register.htm"
+  },
+  "DBConnectionString": "Server=mysql-rfam-public.ebi.ac.uk;Port=4497;Database=Rfam;Uid=rfamro;"
+}
