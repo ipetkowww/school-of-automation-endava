@@ -12,7 +12,8 @@ namespace AutoFramework.Pages.Admin.CreateAssessment
         private static readonly By CorrectTheError = By.CssSelector(".errornote");
         private static readonly By IncorrectRangeError = By.CssSelector("[class*='field-duration'] .errorlist li");
         private static readonly By QuestionSection = By.CssSelector("#questions-group");
-        private QuestionSection _questionSection;
+        private static readonly By ChooseAllButton = By.CssSelector("#id_technologies_add_all_link");
+        private readonly QuestionSection _questionSection;
 
         public CreateAssessmentTestPage(IWebDriver driver) : base(driver)
         {
@@ -37,7 +38,6 @@ namespace AutoFramework.Pages.Admin.CreateAssessment
 
         public bool IsCorrectTheErrorBelowMessageDisplayed()
         {
-            WaitForElementToLoad(CorrectTheError, Timeout10Seconds);
             return IsElementDisplayed(CorrectTheError);
         }
 
@@ -81,6 +81,11 @@ namespace AutoFramework.Pages.Admin.CreateAssessment
         public bool IsAddAnotherButtonDisplayedForQuestionSection()
         {
             return _questionSection.IsAddAnotherButtonDisplayed();
+        }
+
+        public bool IsChooseAllButtonDisplayed()
+        {
+            return IsElementDisplayed(ChooseAllButton);
         }
     }
 }

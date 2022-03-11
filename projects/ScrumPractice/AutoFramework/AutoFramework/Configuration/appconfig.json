@@ -1,6 +1,7 @@
 ﻿{
   "BaseUrl": "",
   "Pages": {
-    "login": "admin/login/"
+    "login": "admin/login/",
+    "subscribe": "accounts/subscribe"
   }
 }

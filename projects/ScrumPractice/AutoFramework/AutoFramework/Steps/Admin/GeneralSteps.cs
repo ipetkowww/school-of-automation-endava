@@ -1,4 +1,5 @@
 ﻿using AutoFramework.Constants;
+using AutoFramework.Pages;
 using AutoFramework.Pages.Admin;
 using AutoFramework.TestData;
 using OpenQA.Selenium;
@@ -11,11 +12,13 @@ namespace AutoFramework.Steps.Admin
     {
         private readonly AdminLoginSteps _adminLoginSteps;
         private readonly HomePage _homePage;
+        private readonly BasePage _basePage;
 
         public GeneralSteps(IWebDriver driver)
         {
             _adminLoginSteps = new AdminLoginSteps(driver);
             _homePage = new HomePage(driver);
+            _basePage = new BasePage(driver);
         }
         
         
@@ -31,6 +34,12 @@ namespace AutoFramework.Steps.Admin
         public void WhenTheAdminClicksOnAddButtonForField(string fieldName)
         {
             _homePage.ClickAddButtonFor(fieldName);
+        }
+
+        [Given(@"The user opens ""(.*)"" page")]
+        public void GivenTheUserOpensPage(string pageName)
+        {
+            _basePage.OpenPage(pageName);
         }
     }
 }

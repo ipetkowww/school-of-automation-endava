@@ -12,6 +12,7 @@ namespace AutoFramework.Pages
     public class BasePage
     {
         protected const int Timeout10Seconds = 10;
+        protected const int Timeout5Seconds = 5;
         private const int Timeout1Second = 1;
         private readonly IWebDriver _driver;
 
@@ -72,7 +73,7 @@ namespace AutoFramework.Pages
 
         protected bool IsElementDisplayed(By locator)
         {
-            WaitForElementToLoad(locator, Timeout10Seconds);
+            WaitForElementToLoad(locator, Timeout5Seconds);
             try
             {
                 return FindElement(locator).Displayed;

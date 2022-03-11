@@ -8,6 +8,7 @@ Feature: Create Assessment Test Cases
         Then "Title" field is displayed
         And "Duration" field is displayed
         And "Technologies" field is displayed
+        And Choose all button is displayed
         And Question section is displayed
         And Add another button button is displayed in Question section
         And Save and add another button is displayed
@@ -70,7 +71,7 @@ Feature: Create Assessment Test Cases
           | title              | duration |
           | AutoTestAssessment | 0        |
           | AutoTestAssessment | 1000     |
-          
+
     Scenario: Verify elements of Question Section
         Given The admin is logged in in Admin Portal
         When The admin clicks on Add button for "Tests" field
@@ -80,3 +81,11 @@ Feature: Create Assessment Test Cases
         And Delete question button is displayed
         And The question has 3 answers available
         And Each answer has input text field with corresponding 'Is Correct' check-box and delete button
+
+    Scenario: Verify Title field should accept only alphabetic characters
+        Given The admin is logged in in Admin Portal
+        When The admin clicks on Add button for "Tests" field
+        And The admin fills title "123@!'"
+        And The admin fills number "2" for duration
+        And The admin clicks on SAVE button
+        Then Please correct the error below message is displayed

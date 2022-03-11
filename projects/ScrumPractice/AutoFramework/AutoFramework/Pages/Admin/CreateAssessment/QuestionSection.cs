@@ -6,13 +6,10 @@ namespace AutoFramework.Pages.Admin.CreateAssessment
     {
         private static readonly By AddAnotherButtonInQuestionSection =
             By.CssSelector("[class='djn-add-item'] a[class*='endavaIntership-question']");
-
         private static readonly By TextArea = By.CssSelector("#id_questions-0-text");
         private static readonly By ImageField = By.CssSelector("#id_questions-0-image");
         private static readonly By DeleteQuestionButton = By.CssSelector(".delete [class*='Intership-question']");
-
         private static readonly By Answer = By.CssSelector("tbody[class*='Intership-answer']");
-        //////a[contains(text(), 'Add another') and contains(@class, 'Intership-question')]
 
         public QuestionSection(IWebDriver driver) : base(driver)
         {

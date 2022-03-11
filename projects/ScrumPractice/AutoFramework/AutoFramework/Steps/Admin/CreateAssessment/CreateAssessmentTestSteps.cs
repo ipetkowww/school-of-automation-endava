@@ -14,7 +14,7 @@ namespace AutoFramework.Steps.Admin.CreateAssessment
         {
             _createAssessmentTestPage = new CreateAssessmentTestPage(driver);
         }
-        
+
         [When(@"The admin fills title ""(.*)""")]
         public void WhenTheAdminFillsTitle(string title)
         {
@@ -44,10 +44,10 @@ namespace AutoFramework.Steps.Admin.CreateAssessment
         public void ThenThisFieldIsRequiredErrorMessageIsDisplayedForField(string fieldName)
         {
             var isFieldRequiredErrorDisplayed = _createAssessmentTestPage.IsFieldRequiredErrorDisplayedFor(fieldName);
-            Assert.IsTrue(isFieldRequiredErrorDisplayed, 
+            Assert.IsTrue(isFieldRequiredErrorDisplayed,
                 $"Required Field error message was not displayed for {fieldName} field.");
         }
-        
+
         [Then(@"Ensure this value is less than or equal to (.*) error message is displayed")]
         public void ThenEnsureThisValueIsLessThanOrEqualToErrorMessageIsDisplayed(int durationValue)
         {
@@ -62,9 +62,10 @@ namespace AutoFramework.Steps.Admin.CreateAssessment
                 durationValue = 1;
                 lessOrGrater = "greater";
             }
+
             var expectedErrorMessage = $"Ensure this value is {lessOrGrater} than or equal to {durationValue}.";
             var incorrectValueMessage = _createAssessmentTestPage.GetErrorMessageTextForValueNotInRange();
-            Assert.AreEqual(expectedErrorMessage, incorrectValueMessage, 
+            Assert.AreEqual(expectedErrorMessage, incorrectValueMessage,
                 $"Ensure this value is greater than or equal to ${durationValue}. error is not displayed");
         }
 
@@ -84,29 +85,35 @@ namespace AutoFramework.Steps.Admin.CreateAssessment
         [Then(@"Save and add another button is displayed")]
         public void ThenSaveAndAddAnotherButtonIsDisplayed()
         {
-            Assert.IsTrue(_createAssessmentTestPage.IsSaveAndAddAnotherButtonIsDisplayed(), 
+            Assert.IsTrue(_createAssessmentTestPage.IsSaveAndAddAnotherButtonIsDisplayed(),
                 "Save and add another button is not displayed");
         }
 
         [Then(@"Save and continue editing button is displayed")]
         public void ThenSaveAndContinueEditingButtonIsDisplayed()
         {
-            Assert.IsTrue(_createAssessmentTestPage.IsSaveAndContinueEditingButtonIsDisplayed(), 
+            Assert.IsTrue(_createAssessmentTestPage.IsSaveAndContinueEditingButtonIsDisplayed(),
                 "Save and continue editing button is not displayed");
         }
 
         [Then(@"SAVE button is displayed")]
         public void ThenSaveButtonIsDisplayed()
         {
-            Assert.IsTrue(_createAssessmentTestPage.IsSaveButtonDisplayed(), 
+            Assert.IsTrue(_createAssessmentTestPage.IsSaveButtonDisplayed(),
                 "SAVE button is not displayed");
         }
 
         [Then(@"Add another button button is displayed in Question section")]
         public void ThenAddAnotherButtonButtonIsDisplayedInQuestionSection()
         {
-            Assert.IsTrue(_createAssessmentTestPage.IsAddAnotherButtonDisplayedForQuestionSection(), 
+            Assert.IsTrue(_createAssessmentTestPage.IsAddAnotherButtonDisplayedForQuestionSection(),
                 "Add another button is not displayed in Question section");
+        }
+
+        [Then(@"Choose all button is displayed")]
+        public void ThenChooseAllButtonIsDisplayed()
+        {
+            Assert.IsTrue(_createAssessmentTestPage.IsChooseAllButtonDisplayed(), "Choose all button is not displayed");
         }
     }
 }
