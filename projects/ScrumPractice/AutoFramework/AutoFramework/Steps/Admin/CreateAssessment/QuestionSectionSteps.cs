@@ -53,5 +53,24 @@ namespace AutoFramework.Steps.Admin.CreateAssessment
         {
             _questionSection.IsEachAnswerContainsCorrectElements();
         }
+
+        [When(@"The user clicks on Delete button in Question section")]
+        public void WhenTheUserClicksOnDeleteButtonInQuestionSection()
+        {
+            _questionSection.DeleteQuestion();
+        }
+
+        [Then(@"The question is deleted successfully")]
+        public void ThenTheQuestionIsDeletedSuccessfully()
+        {
+            Assert.IsFalse(_questionSection.IsDeleteQuestionButtonDisplayed(), 
+                "The question is not deleted.");
+        }
+
+        [When(@"The user clicks on Add another button for an Answer")]
+        public void WhenTheUserClicksOnAddAnotherButtonForAnAnswer()
+        {
+            _questionSection.AddAnotherAnswer();
+        }
     }
 }

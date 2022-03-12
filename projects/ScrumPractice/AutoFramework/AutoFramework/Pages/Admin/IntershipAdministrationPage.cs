@@ -2,10 +2,10 @@
 
 namespace AutoFramework.Pages.Admin
 {
-    public class HomePage : BasePage
+    public class IntershipAdministrationPage : BasePage
     {
         
-        public HomePage(IWebDriver driver) : base(driver)
+        public IntershipAdministrationPage(IWebDriver driver) : base(driver)
         {
         }
 

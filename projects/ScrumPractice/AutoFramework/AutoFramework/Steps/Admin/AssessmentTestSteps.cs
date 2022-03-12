@@ -16,10 +16,10 @@ namespace AutoFramework.Steps.Admin
             _assessmentTestsPage = new AssessmentTestsPage(driver);
             _scenarioContext = scenarioContext;
         }
-        
-        
+
         [Then(@"The admin verifies that assessment test with name ""(.*)"" is successfully created")]
-        public void ThenTheAdminVerifiesThatAssessmentTestWithNameIsSuccessfullyCreated(string testAssessmentName)
+        public void 
+            ThenTheAdminVerifiesThatAssessmentTestWithNameIsSuccessfullyCreated(string testAssessmentName)
         {
             bool isMessageDisplayed = _assessmentTestsPage.IsSuccessMessageDisplayed();
             var successMessageText = _assessmentTestsPage.GetSuccessMessageText();
@@ -37,6 +37,12 @@ namespace AutoFramework.Steps.Admin
         public void ThenTheAdminDeletesAssessmentTestWithName(string testAssessmentName)
         {
             _assessmentTestsPage.Delete(testAssessmentName);
+        }
+
+        [When(@"The user clicks on Edit for assessment test with name ""(.*)""")]
+        public void WhenTheUserClicksOnEditForAssessmentTestWithName(string autoAssessmentTest)
+        {
+            _assessmentTestsPage.ClickEditButtonForTestWithName(autoAssessmentTest);
         }
     }
 }

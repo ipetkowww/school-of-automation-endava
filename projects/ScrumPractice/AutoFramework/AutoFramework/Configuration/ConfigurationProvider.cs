@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using AutoFramework.Constants;
 using Microsoft.Extensions.Configuration;
 
@@ -10,6 +11,9 @@ namespace AutoFramework.Configuration
 
         static ConfigurationProvider()
         {
+            var currentDirectory = Directory.GetCurrentDirectory();
+            Console.WriteLine(currentDirectory);
+
             GetConfigurationValue = new ConfigurationBuilder()
                 .SetBasePath($"{Directory.GetCurrentDirectory()}/{AppConstants.ConfigurationFolderName}")
                 .AddJsonFile(AppConstants.AppConfigJsonFileName)

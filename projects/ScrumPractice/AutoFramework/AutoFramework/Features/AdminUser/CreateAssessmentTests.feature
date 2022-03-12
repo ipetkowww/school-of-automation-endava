@@ -72,16 +72,6 @@ Feature: Create Assessment Test Cases
           | AutoTestAssessment | 0        |
           | AutoTestAssessment | 1000     |
 
-    Scenario: Verify elements of Question Section
-        Given The admin is logged in in Admin Portal
-        When The admin clicks on Add button for "Tests" field
-        And The user clicks on Add another button in Question section
-        Then Question text field is displayed
-        And Upload image button is displayed
-        And Delete question button is displayed
-        And The question has 3 answers available
-        And Each answer has input text field with corresponding 'Is Correct' check-box and delete button
-
     Scenario: Verify Title field should accept only alphabetic characters
         Given The admin is logged in in Admin Portal
         When The admin clicks on Add button for "Tests" field

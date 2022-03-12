@@ -26,5 +26,11 @@ namespace AutoFramework.Pages.Admin
             string deleteButtonLocator = $"//td[text()='{testAssessmentName}']/parent::tr//a[@class='deletelink']";
             Click(By.XPath(deleteButtonLocator));
         }
+
+        public void ClickEditButtonForTestWithName(string testAssessmentName)
+        {
+            string editButtonLocator = $"//td[text()='{testAssessmentName}']/parent::tr//a[@class='changelink']";
+            Click(By.XPath(editButtonLocator));
+        }
     }
 }

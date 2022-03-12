@@ -89,5 +89,11 @@ namespace AutoFramework.Pages
             var isElementLoaded = WaitForElementToLoad(elementLocator, Timeout1Second);
             Assert.IsTrue(isElementLoaded, failMessage);
         }
+
+        protected void WaitForElementToDisappear(By locator)
+        {
+            new WebDriverWait(_driver, TimeSpan.FromSeconds(Timeout5Seconds))
+                .Until(ExpectedConditions.InvisibilityOfElementLocated(locator));
+        }
     }
 }

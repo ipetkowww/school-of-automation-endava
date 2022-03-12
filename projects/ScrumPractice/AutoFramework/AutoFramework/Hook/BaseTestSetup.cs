@@ -56,34 +56,79 @@ namespace AutoFramework.Hook
                 typeof(ScenarioContext).GetProperty("TestStatus", BindingFlags.Instance | BindingFlags.NonPublic);
             var getter = propertyInfo?.GetGetMethod(true);
             var testResult = getter?.Invoke(scenarioContext, null);
+            var defaultNewLine = Environment.NewLine;
             var stepText = stepType + "\t" + scenarioContext.StepContext.StepInfo.Text;
             if (scenarioContext.TestError == null)
             {
-                if (stepType.Equals("Given"))
-                    _scenario?.CreateNode<Given>(stepText);
-                else if (stepType.Equals("When"))
-                    _scenario?.CreateNode<When>(stepText);
-                else if (stepType.Equals("Then"))
-                    _scenario?.CreateNode<Then>(stepText);
-                else if (stepType.Equals("And"))
-                    _scenario?.CreateNode<And>(stepText);
+                switch (stepType)
+                {
+                    case "Given":
+                        _scenario?.CreateNode<Given>(stepText);
+                        break;
+                    case "When":
+                        _scenario?.CreateNode<When>(stepText);
+                        break;
+                    case "Then":
+                        _scenario?.CreateNode<Then>(stepText);
+                        break;
+                    case "And":
+                        _scenario?.CreateNode<And>(stepText);
+                        break;
+                }
+            }
+            else if (scenarioContext.TestError != null)
+            {
+                var stepMessage = $"Message: {scenarioContext.TestError.Message}" + defaultNewLine;
+                var stepStacktrace = $"Stacktrace: {scenarioContext.TestError.StackTrace}";
+                var mediaEntity = MediaEntityBuilder.CreateScreenCaptureFromBase64String(
+                    "Failed Test", scenarioContext.ScenarioInfo.Title.Trim()).Build();
+                switch (stepType)
+                {
+                    case "Given":
+                        _scenario?.CreateNode<Given>(stepText)
+                            .Fail(stepMessage, mediaEntity)
+                            .Fail(stepStacktrace);
+                        break;
+                    case "When":
+                        _scenario?.CreateNode<When>(stepText)
+                            .Fail(stepMessage, mediaEntity)
+                            .Fail(stepStacktrace);
+                        break;
+                    case "Then":
+                        _scenario?.CreateNode<Then>(stepText)
+                            .Fail(stepMessage, mediaEntity)
+                            .Fail(stepStacktrace);
+                        break;
+                    case "And":
+                        _scenario?.CreateNode<And>(stepText)
+                            .Fail(stepMessage, mediaEntity)
+                            .Fail(stepStacktrace);
+                        break;
+                }
             }
 
             if (testResult?.ToString() == "StepDefinitionPending")
             {
                 var stepPendingText = "Step definition pending";
-                if (stepType.Equals("Given"))
-                    _scenario?.CreateNode<Given>(stepText)
-                        .Skip(stepPendingText);
-                else if (stepType.Equals("When"))
-                    _scenario?.CreateNode<When>(stepText)
-                        .Skip(stepPendingText);
-                else if (stepType.Equals("Then"))
-                    _scenario?.CreateNode<Then>(stepText)
-                        .Skip(stepPendingText);
-                else if (stepType.Equals("And"))
-                    _scenario?.CreateNode<And>(stepText)
-                        .Skip(stepPendingText);
+                switch (stepType)
+                {
+                    case "Given":
+                        _scenario?.CreateNode<Given>(stepText)
+                            .Skip(stepPendingText);
+                        break;
+                    case "When":
+                        _scenario?.CreateNode<When>(stepText)
+                            .Skip(stepPendingText);
+                        break;
+                    case "Then":
+                        _scenario?.CreateNode<Then>(stepText)
+                            .Skip(stepPendingText);
+                        break;
+                    case "And":
+                        _scenario?.CreateNode<And>(stepText)
+                            .Skip(stepPendingText);
+                        break;
+                }
             }
         }
     }

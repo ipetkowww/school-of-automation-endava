@@ -10,6 +10,8 @@ namespace AutoFramework.Pages.Admin.CreateAssessment
         private static readonly By ImageField = By.CssSelector("#id_questions-0-image");
         private static readonly By DeleteQuestionButton = By.CssSelector(".delete [class*='Intership-question']");
         private static readonly By Answer = By.CssSelector("tbody[class*='Intership-answer']");
+        private static readonly By AddAnotherButtonForAnswer =
+            By.CssSelector("[data-inline-model='endavaIntership-answer'] [class*='add-handler']");
 
         public QuestionSection(IWebDriver driver) : base(driver)
         {
@@ -56,6 +58,22 @@ namespace AutoFramework.Pages.Admin.CreateAssessment
         public bool IsAddAnotherButtonDisplayed()
         {
             return IsElementDisplayed(AddAnotherButtonInQuestionSection);
+        }
+
+        public void DeleteQuestion()
+        {
+            Click(DeleteQuestionButton);
+        }
+
+        public bool IsQuestionDeleted()
+        {
+            WaitForElementToDisappear(DeleteQuestionButton);
+            return IsElementDisplayed(DeleteQuestionButton);
+        }
+
+        public void AddAnotherAnswer()
+        {
+            Click(AddAnotherButtonForAnswer);
         }
     }
 }
