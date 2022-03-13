@@ -1,4 +1,5 @@
 ﻿using AutoFramework.Pages;
+using AutoFramework.Utils;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
@@ -78,6 +79,44 @@ namespace AutoFramework.Steps
                     Assert.IsTrue(isEnabled, "Subscribe button is disabled");
                     break;
             }
+        }
+
+        [When(@"The user fills following data for subscription:")]
+        public void WhenTheUserFillsAllRequiredFieldsWithFollowingData(Table table)
+        {
+            var email = table.Rows[0]["email"];
+            if (email.Equals("RANDOM_EMAIL"))
+            {
+                email = Helper.GetRandomEmail();
+            }
+            _subscribePage.FillFirstName(table.Rows[0]["firstName"]);
+            _subscribePage.FillLastName(table.Rows[0]["lastName"]);
+            _subscribePage.FillEmail(email);
+            _subscribePage.FillPhoneNumber(table.Rows[0]["phoneNumber"]);
+        }
+
+        [When(@"The user selects Graduation Status")]
+        public void WhenTheUserSelectsGraduationStatus()
+        {
+            _subscribePage.SelectGraduationStatus();
+        }
+
+        [When(@"The user selects Preferred Technologies")]
+        public void WhenTheUserSelectsPreferredTechnologies()
+        {
+            _subscribePage.SelectPreferredTechnologies();
+        }
+
+        [When(@"The user clicks on Subscribe button")]
+        public void WhenTheUserClicksOnSubscribeButton()
+        {
+            _subscribePage.ClickSubscribeButton();
+        }
+
+        [Then(@"The user verifies welcome message is displayed")]
+        public void ThenTheUserVerifiesWelcomeMessageIsDisplayed()
+        {
+            Assert.IsTrue(_subscribePage.IsWelcomeMessageIsDisplayed(), "Welcome message is not displayed");
         }
     }
 }
