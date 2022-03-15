@@ -64,22 +64,22 @@ namespace AutoFramework.Pages
             return FindElement(SubscribeButton).Enabled;
         }
 
-        public void FillFirstName(string firstName)
+        public void FillFirstName(string? firstName)
         {
             FillTextInElement(FirstName, firstName);
         }
 
-        public void FillLastName(string lastName)
+        public void FillLastName(string? lastName)
         {
             FillTextInElement(LastName, lastName);
         }
 
-        public void FillEmail(string email)
+        public void FillEmail(string? email)
         {
             FillTextInElement(Email, email);
         }
 
-        public void FillPhoneNumber(string phoneNumber)
+        public void FillPhoneNumber(string? phoneNumber)
         {
             FillTextInElement(Phone, phoneNumber);
         }

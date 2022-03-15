@@ -20,7 +20,7 @@ namespace AutoFramework.Pages.Admin.CreateAssessment
             _questionSection = new QuestionSection(driver);
         }
 
-        public void FillTitle(string title)
+        public void FillTitle(string? title)
         {
             WaitForElementToLoad(Title, Timeout10Seconds);
             FillTextInElement(Title, title);

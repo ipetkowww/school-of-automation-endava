@@ -21,7 +21,7 @@ namespace AutoFramework.Pages
             _driver = driver;
         }
     
-        protected void FillTextInElement(By locator, string text)
+        protected void FillTextInElement(By locator, string? text)
         {
             FindElement(locator).Clear();
             FindElement(locator).SendKeys(text);

@@ -1,5 +1,9 @@
 ﻿{
   "BaseUrl": "",
+  "Credentials": {
+    "adminEmail": "",
+    "adminPassword": ""
+  },
   "Pages": {
     "login": "admin/login/",
     "subscribe": "accounts/subscribe"

@@ -4,7 +4,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
-namespace AutoFramework.Steps
+namespace AutoFramework.Steps.Applicant
 {
     [Binding]
     public class SubscribeSteps

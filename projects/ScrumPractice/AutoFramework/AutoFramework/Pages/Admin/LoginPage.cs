@@ -12,13 +12,13 @@ namespace AutoFramework.Pages.Admin
         {
         }
 
-        public void EnterUsername(string username)
+        public void EnterUsername(string? username)
         {
             WaitForElementToLoad(Username, Timeout10Seconds);
             FillTextInElement(Username, username);
         }
 
-        public void EnterPassword(string password)
+        public void EnterPassword(string? password)
         {
             FillTextInElement(Password, password);
         }

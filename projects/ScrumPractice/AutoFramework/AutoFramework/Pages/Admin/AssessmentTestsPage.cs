@@ -12,7 +12,7 @@ namespace AutoFramework.Pages.Admin
 
         public bool IsSuccessMessageDisplayed()
         {
-            WaitForElementToLoad(SuccessMessageField, Timeout10Seconds);
+            WaitForElementToLoad(SuccessMessageField, Timeout5Seconds);
             return IsElementDisplayed(SuccessMessageField);
         }
 

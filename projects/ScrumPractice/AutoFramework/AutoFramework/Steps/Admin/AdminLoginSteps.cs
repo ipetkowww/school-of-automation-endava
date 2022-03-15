@@ -24,7 +24,7 @@ namespace AutoFramework.Steps.Admin
         }
 
         [When(@"The user logs in into the system with username ""(.*)"" and password ""(.*)""")]
-        public void WhenTheUserLogsInIntoTheSystemWithUsernameAndPassword(string username, string password)
+        public void WhenTheUserLogsInIntoTheSystemWithUsernameAndPassword(string? username, string? password)
         {
             _loginPage.EnterUsername(username);
             _loginPage.EnterPassword(password);

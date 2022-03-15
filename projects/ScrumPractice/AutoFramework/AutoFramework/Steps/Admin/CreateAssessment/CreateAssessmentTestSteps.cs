@@ -1,7 +1,6 @@
 ﻿using AutoFramework.Constants;
 using AutoFramework.Pages.Admin;
 using AutoFramework.Pages.Admin.CreateAssessment;
-using AutoFramework.TestData;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
@@ -21,16 +20,16 @@ namespace AutoFramework.Steps.Admin.CreateAssessment
         }
         
         [Given(@"Assessment with name ""(.*)"" is created")]
-        public void GivenAssessmentWithNameIsCreated(string testAssessmentName)
+        public void GivenAssessmentWithNameIsCreated(string? testAssessmentName)
         {
             _intershipAdministrationPage.ClickAddButtonFor(EndavaInternshipFields.Tests);
             _createAssessmentTestPage.FillTitle(testAssessmentName);
-            _createAssessmentTestPage.FillDuration(AssessmentTest.Duration);
+            _createAssessmentTestPage.FillDuration(AppConstants.Duration);
             _createAssessmentTestPage.ClickSaveButton();
         }
 
         [When(@"The admin fills title ""(.*)""")]
-        public void WhenTheAdminFillsTitle(string title)
+        public void WhenTheAdminFillsTitle(string? title)
         {
             _createAssessmentTestPage.FillTitle(title);
         }
